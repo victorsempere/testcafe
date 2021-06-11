@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  testcafe:
+    image: testcafe/testcafe
+    ports:
+      - 1337:1337
+      - 1338:1338
+    volumes: 
+      - ./tests:/tests
+    # 172.31.16.1 -> Ip/dns del equipo que lanza el docker
+    command: --add-host=172.31.16.1:127.0.0.1 remote firefox /tests/**/*.js --live --hostname localhost
+
+volumes:
+  tests:
